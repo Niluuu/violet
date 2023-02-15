@@ -1,12 +1,12 @@
 import { Inter } from "@next/font/google";
-import { Button } from "./components/Button";
-import { Switch } from "./components/Switch";
-import { Checkbox } from "./components/Checkbox";
-import { Radio } from "./components/Radio";
+import { Button } from "../components/Button";
+import { Switch } from "../components/Switch";
+import { Checkbox } from "../components/Checkbox";
+import { Radio } from "../components/Radio";
 import { FiLinkedin, FiGithub, FiSearch, FiFacebook } from "react-icons/Fi";
-import { IconButton } from "./components/IconButton";
-import { Uploader } from "./components/Uploader";
-import { Alert } from "./components/Alerts";
+import { IconButton } from "../components/IconButton";
+import { Uploader } from "../components/Uploader";
+import { Alert } from "../components/Alerts";
 
 export default function Home() {
   return (
