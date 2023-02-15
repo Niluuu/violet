@@ -1,0 +1,377 @@
+:root {
+  --primary-light: #e793cb;
+  --primary: #c1549c;
+  --primary-dark: #7e549f;
+
+  --white: #ffffff;
+  --greyLight-1: #e4ebf5;
+  --greyLight-2: #c8d0e7;
+  --greyLight-3: #bec8e4;
+  --greyDark: #9baacf;
+
+  --theme-dark: #2b2129;
+  --theme-light: #b6c3e4;
+
+  --black: #ffffff00;
+
+  --succsess: #bef769;
+  --error: #f74040;
+  --warning: #f8f840;
+}
+
+$shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2),
+  -0.2rem -0.2rem 0.5rem var(--white);
+$inner-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2),
+  inset -0.2rem -0.2rem 0.5rem var(--white);
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 60%;
+  overflow-y: scroll;
+  background: var(--white);
+
+  @media screen and (min-width: 900px) {
+    font-size: 75%;
+  }
+}
+
+.layout {
+  display: grid;
+  grid-auto-flow: column;
+  height: 100vh;
+  z-index: 100;
+  font-size: 1.6rem;
+
+  .sider {
+    grid-column: 1;
+    grid-row: 1 / 6;
+    width: 300px;
+
+    &__dark {
+      background: var(--theme-dark);
+      color: var(--greyLight-1);
+    }
+
+    &__light {
+      background: var(--theme-light);
+    }
+
+    &__list {
+      padding: 2rem;
+    }
+  }
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  background: var(--greyLight-1);
+}
+
+.components {
+  position: relative;
+  top: 5rem;
+}
+
+.row {
+  display: flex;
+  height: 6rem;
+  width: 50rem;
+}
+
+.switch {
+  width: 6rem;
+  margin: 0.5rem;
+
+  input {
+    display: none;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 3rem;
+    box-shadow: $shadow;
+    background: var(--black);
+    position: relative;
+    cursor: pointer;
+    border-radius: 1.6rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0.4rem;
+      width: 2.1rem;
+      height: 2.1rem;
+      border-radius: 50%;
+      background: var(--greyDark);
+      transition: all 0.4s ease;
+    }
+
+    &::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(
+        330deg,
+        var(--primary-dark) 0%,
+        var(--primary) 50%,
+        var(--primary-light) 100%
+      );
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+  }
+
+  & input:checked {
+    & ~ label {
+      &::before {
+        opacity: 1;
+      }
+
+      &::after {
+        left: 57%;
+        background: var(--greyLight-1);
+      }
+    }
+  }
+}
+
+.checkbox {
+  display: flex;
+  justify-content: center;
+  margin: 0.5rem;
+
+  input {
+    display: none;
+  }
+
+  label {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    width: 2.8rem;
+    height: 2.8rem;
+
+    &:hover i {
+      color: var(--primary);
+    }
+
+    i {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--greyDark);
+      transition: 0.3s ease;
+    }
+  }
+
+  & input:checked {
+    & ~ label {
+      svg path {
+        color: var(--primary);
+      }
+    }
+  }
+}
+
+.radio {
+  margin: 0.5rem;
+
+  input {
+    display: none;
+  }
+
+  & input:checked {
+    & ~ label {
+      box-shadow: $inner-shadow;
+
+      &::after {
+        background: var(--primary);
+      }
+    }
+  }
+
+  label {
+    box-shadow: $shadow;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+
+    &:hover {
+      &::after {
+        background: var(--primary);
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 1.4rem;
+      height: 1.4rem;
+      background: var(--greyDark);
+      border-radius: 50%;
+      transition: 0.3s ease;
+    }
+  }
+}
+
+.btn {
+  width: 15rem;
+  height: 4rem;
+  border-radius: 1rem;
+  box-shadow: $shadow;
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin: 0.5rem;
+
+  &_primary {
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+    background: var(--primary);
+    box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-light),
+      inset -0.2rem -0.2rem 1rem var(--primary-dark), $shadow;
+    color: var(--greyLight-1);
+
+    &:hover {
+      color: var(--white);
+    }
+
+    &:active {
+      box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-dark),
+        inset -0.2rem -0.2rem 1rem var(--primary-light);
+    }
+  }
+
+  &_icon {
+    p,
+    .icon {
+      color: var(--greyDark);
+    }
+
+    &:hover {
+      color: var(--white);
+    }
+
+    &:active {
+      box-shadow: inset 0.2rem 0.2rem 1rem var(--greyDark),
+        inset -0.2rem -0.2rem 1rem var(--greyLight-2);
+    }
+  }
+
+  .icon {
+    font-size: 2rem;
+    margin-right: 1rem;
+  }
+
+  p {
+    font-size: 1.6rem;
+  }
+
+  &_circle {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 10rem;
+
+    .icon {
+      margin: auto;
+    }
+  }
+}
+
+input[type="file"] {
+  border: 0.2rem solid var(--greyLight-3);
+  padding: 4rem;
+  border: dashed var(--greyDark);
+  cursor: pointer;
+
+  &::file-selector-button {
+    font-weight: bold;
+    color: var(--primary-dark);
+    padding: 0.5em;
+    border: none;
+    border-radius: 2rem;
+    background: initial;
+    cursor: pointer;
+  }
+}
+
+.uploader {
+  background: var(--greyLight-1);
+  color: var(--greyDark);
+
+  p {
+    font-size: 2rem;
+    padding: 1rem 0;
+    text-align: center;
+  }
+
+  &_btn {
+    width: 8rem;
+    height: 3rem;
+    right: 0;
+    margin: 1rem auto;
+    border: initial;
+  }
+}
+
+.alert {
+  width: 40rem;
+  height: 4rem;
+  border: 2rem;
+  border-radius: 1rem;
+  background-color: var(--white);
+  color: var(--greyDark);
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 1rem 2rem;
+  margin: 2rem 0;
+  font-size: 1.7rem;
+  box-shadow: inset 0.1rem 0.1rem 0.1rem var(--greyLight-2),
+    inset -0.2rem -0.2rem 1rem var(--greyLight-1);
+    cursor: pointer;
+
+  p {
+    padding: 2rem 1rem;
+  }
+
+  &_succsess {
+    svg {
+      color: var(--succsess);
+    }
+  }
+  &_error {
+    svg {
+      color: var(--error);
+    }
+  }
+  &_warning {
+    svg {
+      color: var(--warning);
+    }
+  }
+}
