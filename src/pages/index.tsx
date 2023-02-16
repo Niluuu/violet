@@ -3,10 +3,10 @@ import { Button } from "../components/Button";
 import { Switch } from "../components/Switch";
 import { Checkbox } from "../components/Checkbox";
 import { Radio } from "../components/Radio";
-import { FiLinkedin, FiGithub, FiSearch, FiFacebook } from "react-icons/Fi";
 import { IconButton } from "../components/IconButton";
 import { Uploader } from "../components/Uploader";
 import { Alert } from "../components/Alerts";
+import { Icon } from "@/components/Icon";
 
 export default function Home() {
   return (
@@ -14,13 +14,16 @@ export default function Home() {
       <div className="components">
         <div className="row">
           <Button type="primary" title="Button" />
-          <IconButton title="LinkedIn" icon={<FiSearch />} />
+          <IconButton
+            title="LinkedIn"
+            icon={<Icon path="/images/search.svg" />}
+          />
         </div>
 
         <div className="row">
-          <IconButton icon={<FiGithub />} circle />
-          <IconButton icon={<FiFacebook />} circle />
-          <IconButton icon={<FiLinkedin />} circle />
+          <IconButton icon={<Icon path="/images/github.svg" />} circle />
+          <IconButton icon={<Icon path="/images/facebook.svg" />} circle />
+          <IconButton icon={<Icon path="/images/linkedin.svg" />} circle />
         </div>
 
         <div className="row">

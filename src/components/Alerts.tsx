@@ -1,6 +1,4 @@
-import { GiCheckMark } from "react-icons/Gi";
-import { RiErrorWarningLine } from "react-icons/Ri";
-import { TbFaceIdError } from "react-icons/Tb";
+import { Icon } from "./Icon";
 
 type AlertProps = {
   errorType: "succsess" | "error" | "warning";
@@ -10,9 +8,9 @@ type AlertProps = {
 export const Alert = ({ errorType, message }: AlertProps) => {
   return (
     <div className={`alert  alert_${errorType}`}>
-      {errorType === "succsess" ? <GiCheckMark /> : null}
-      {errorType === "error" ? <TbFaceIdError /> : null}
-      {errorType === "warning" ? <RiErrorWarningLine /> : null}
+      {errorType === "succsess" ? <Icon path="/images/done.svg" /> : null}
+      {errorType === "error" ? <Icon path="/images/error.svg" /> : null}
+      {errorType === "warning" ? <Icon path="/images/warning.svg" /> : null}
       <p>{message}</p>
     </div>
   );

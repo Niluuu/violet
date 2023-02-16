@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { HiOutlineBadgeCheck } from "react-icons/hi";
-import { ImRadioUnchecked } from "react-icons/im";
+import { Icon } from "./Icon";
 
 
 type CheckboxProps = {
@@ -20,7 +19,11 @@ export const Checkbox = ({ onClick, isChecked }: CheckboxProps) => {
     <div className="checkbox">
       <input type="checkbox" checked />
       <label onClick={handleClick}>
-        {checked ? <HiOutlineBadgeCheck fontSize={40}/> : <ImRadioUnchecked fontSize={28}/>}
+        {!checked ? (
+          <Icon path="/images/empty-checked.svg" size="sm" />
+        ) : (
+          <Icon path="/images/checked.svg" size="md" />
+        )}
       </label>
     </div>
   );
